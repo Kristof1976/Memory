@@ -9,7 +9,7 @@ class PWAManager {
     // Register service worker
     if ('serviceWorker' in navigator) {
       try {
-        const registration = await navigator.serviceWorker.register('./sw.js');
+        const registration = await navigator.serviceWorker.register('/Memory/sw.js');
         console.log('Service Worker registered successfully:', registration.scope);
         
         // Listen for updates

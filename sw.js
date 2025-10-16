@@ -1,49 +1,50 @@
 const CACHE_NAME = 'memory-game-v1';
+const BASE_PATH = '/Memory/';
 const urlsToCache = [
-  './',
-  './index.html',
-  './css/main.css',
-  './js/main.js',
-  './js/ui.js',
-  './js/game.js',
-  './js/gameManager.js',
-  './js/board.js',
-  './js/card.js',
-  './js/config.js',
-  './manifest.json',
+  BASE_PATH,
+  BASE_PATH + 'index.html',
+  BASE_PATH + 'css/main.css',
+  BASE_PATH + 'js/main.js',
+  BASE_PATH + 'js/ui.js',
+  BASE_PATH + 'js/game.js',
+  BASE_PATH + 'js/gameManager.js',
+  BASE_PATH + 'js/board.js',
+  BASE_PATH + 'js/card.js',
+  BASE_PATH + 'js/config.js',
+  BASE_PATH + 'manifest.json',
   // Images
-  './img/0.png',
-  './img/1.png',
-  './img/2.png',
-  './img/3.png',
-  './img/4.png',
-  './img/5.png',
-  './img/6.png',
-  './img/7.png',
-  './img/8.png',
-  './img/9.png',
-  './img/10.png',
-  './img/11.png',
-  './img/12.png',
-  './img/13.png',
-  './img/14.png',
-  './img/15.png',
-  './img/16.png',
-  './img/17.png',
-  './img/18.png',
-  './img/19.png',
-  './img/20.png',
-  './img/21.png',
-  './img/22.png',
-  './img/23.png',
-  './img/24.png',
-  './img/25.png',
-  './img/26.png',
-  './img/27.png',
-  './img/28.png',
-  './img/29.png',
-  './img/30.png',
-  './img/31.png'
+  BASE_PATH + 'img/0.png',
+  BASE_PATH + 'img/1.png',
+  BASE_PATH + 'img/2.png',
+  BASE_PATH + 'img/3.png',
+  BASE_PATH + 'img/4.png',
+  BASE_PATH + 'img/5.png',
+  BASE_PATH + 'img/6.png',
+  BASE_PATH + 'img/7.png',
+  BASE_PATH + 'img/8.png',
+  BASE_PATH + 'img/9.png',
+  BASE_PATH + 'img/10.png',
+  BASE_PATH + 'img/11.png',
+  BASE_PATH + 'img/12.png',
+  BASE_PATH + 'img/13.png',
+  BASE_PATH + 'img/14.png',
+  BASE_PATH + 'img/15.png',
+  BASE_PATH + 'img/16.png',
+  BASE_PATH + 'img/17.png',
+  BASE_PATH + 'img/18.png',
+  BASE_PATH + 'img/19.png',
+  BASE_PATH + 'img/20.png',
+  BASE_PATH + 'img/21.png',
+  BASE_PATH + 'img/22.png',
+  BASE_PATH + 'img/23.png',
+  BASE_PATH + 'img/24.png',
+  BASE_PATH + 'img/25.png',
+  BASE_PATH + 'img/26.png',
+  BASE_PATH + 'img/27.png',
+  BASE_PATH + 'img/28.png',
+  BASE_PATH + 'img/29.png',
+  BASE_PATH + 'img/30.png',
+  BASE_PATH + 'img/31.png'
 ];
 
 // Install event - cache resources
@@ -113,7 +114,7 @@ self.addEventListener('fetch', event => {
       .catch(() => {
         // Offline fallback
         if (event.request.destination === 'document') {
-          return caches.match('./index.html');
+          return caches.match(BASE_PATH + 'index.html');
         }
       })
   );
@@ -128,8 +129,6 @@ self.addEventListener('sync', event => {
 });
 
 async function doBackgroundSync() {
-  // Here you could sync game progress to a server
-  // For now, we just ensure local storage is consistent
   return Promise.resolve();
 }
 
@@ -172,7 +171,7 @@ self.addEventListener('notificationclick', event => {
   
   if (event.action === 'explore') {
     event.waitUntil(
-      clients.openWindow('./')
+      clients.openWindow(BASE_PATH)
     );
   }
 });

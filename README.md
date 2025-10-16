@@ -2,6 +2,12 @@
 
 A modern, progressive web app (PWA) version of the classic memory card matching game built with vanilla JavaScript, featuring 11 challenging levels and a sophisticated scoring system.
 
+## 🌐 Live Demo
+
+**Play Online:** https://kristof1976.github.io/Memory/
+
+The game is hosted on GitHub Pages and works on all devices - mobile, tablet, and desktop!
+
 ## 🌟 Features
 
 ### 🎯 Game Mechanics
