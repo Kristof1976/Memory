@@ -1,0 +1,466 @@
+
+
+:root {
+    --gap: 8px;
+    --bg: #000000;
+    --card-bg: #ffffff;
+    --primary: #0ea5a4;
+    --text: #ffffff;
+    --muted: #9ca3af;
+    --danger: #ef4444;
+    --overlay-bg: #1a1a1a;
+    --card-back-1: #e6eef0;
+    --card-back-2: #f8fafc;
+    --radius: 10px;
+    --shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+    
+    /* Alpha variations */
+    --white-alpha-10: rgba(255, 255, 255, 0.1);
+    --white-alpha-20: rgba(255, 255, 255, 0.2);
+    --white-alpha-30: rgba(255, 255, 255, 0.3);
+    --black-alpha-35: rgba(0, 0, 0, 0.35);
+    --black-alpha-30: rgba(0, 0, 0, 0.3);
+    --primary-alpha-18: rgba(14, 165, 164, 0.18);
+    --primary-alpha-12: rgba(34, 197, 94, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.header {
+    padding: 8px 0
+}
+
+.title {
+    margin: 0;
+    font-size: 1.6rem
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted)
+}
+
+.stats {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 12px;
+    background: var(--white-alpha-10);
+    border: 1px solid var(--white-alpha-20);
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat {
+    text-align: center;
+    min-width: 80px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.stat-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.stat-value.warning {
+    color: var(--danger);
+    animation: pulse-warning 1s infinite;
+}
+
+@keyframes pulse-warning {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 12px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--white-alpha-30);
+    background: var(--white-alpha-10);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none
+}
+
+.board-area {
+    margin-top: 16px
+}
+
+.board {
+    display: grid;
+    gap: var(--gap);
+    width: 100%;
+}
+
+/* Card styling */
+.card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    /* vierkant */
+    perspective: 800px;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Ensure proper touch targets on mobile */
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 350ms ease;
+    box-shadow: var(--shadow);
+    background: var(--card-bg);
+}
+
+/* Hybrid: Opacity-based flip  + 3D animation */
+.card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 350ms ease;
+}
+
+.card-front {
+    opacity: 0;
+}
+
+.card-back {
+    background: linear-gradient(180deg, var(--card-back-1), var(--card-back-2));
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Flip animation: opacity change + subtle 3D effect */
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card.flipped .card-front {
+    opacity: 1;
+}
+
+.card.flipped .card-back {
+    opacity: 0;
+}
+
+.card.matched .card-inner {
+    outline: 4px solid var(--primary-alpha-12);
+}
+
+.card-back .back-inner {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-shadow: 0 2px 4px var(--black-alpha-30);
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black-alpha-35);
+}
+
+.overlay.hidden {
+    display: none
+}
+
+.overlay-card {
+    background: var(--overlay-bg);
+    color: var(--text);
+    border: 1px solid var(--white-alpha-20);
+    padding: 16px;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 360px;
+    text-align: center
+}
+
+.overlay-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px
+}
+
+.footer {
+    margin: 20px 0;
+    color: var(--muted);
+    font-size: 0.85rem
+}
+
+/* Mobile-first grid sizing (board) */
+@media (max-width: 639px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .stats {
+        gap: 8px;
+        padding: 8px;
+        margin: 12px 0;
+    }
+    
+    .stat {
+        min-width: 60px;
+        flex: 1;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .stat-value {
+        font-size: 1rem;
+    }
+    
+    .title {
+        font-size: 1.4rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .board {
+        gap: 4px;
+        max-width: 100vw;
+    }
+    
+    .card-back .back-inner {
+        font-size: 2.5rem;
+    }
+    
+    .overlay-card {
+        margin: 20px;
+        padding: 20px;
+        max-width: calc(100vw - 40px);
+    }
+}
+
+@media (min-width: 0px) {
+    .board {
+        grid-template-columns: repeat(var(--cols), 1fr);
+    }
+}
+
+/* Larger screens tweaks */
+@media (min-width: 640px) {
+    .title {
+        font-size: 2rem
+    }
+
+    .container {
+        padding: 24px
+    }
+}
+
+/* Accessibility focus */
+button:focus,
+.card:focus {
+    outline: 3px solid var(--primary-alpha-18)
+}
+
+/* Accessibility helpers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Utility classes to replace inline styles */
+.hidden {
+    display: none !important;
+}
+
+.show-inline {
+    display: inline-block !important;
+}
+
+.show-block {
+    display: block !important;
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .card:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+    }
+}
+
+/* Prevent zoom on double tap */
+* {
+    touch-action: manipulation;
+}
+
+/* PWA specific styles */
+.pwa-install-btn {
+    background: linear-gradient(135deg, var(--primary), #0d9488);
+    border: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+}
+
+.pwa-install-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(14, 165, 164, 0.3);
+}
+
+.update-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.update-banner button {
+    background: white;
+    color: var(--primary);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.update-banner button:hover {
+    background: var(--white-alpha-20);
+    color: white;
+}
+
+/* Standalone PWA adjustments */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .container {
+        padding-top: calc(16px + env(safe-area-inset-top));
+    }
+    
+    /* Hide install button when already installed */
+    .pwa-install-btn {
+        display: none;
+    }
+}
+

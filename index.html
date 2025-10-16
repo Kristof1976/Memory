@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Memory spel - OOP JavaScript, mobile-first">
+    <meta charset="UTF-8">
+    <title>Memory Game - Progressive Challenge</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0ea5a4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Memory Game">
+    <meta name="msapplication-TileColor" content="#0ea5a4">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/pwa.js"></script>
+</head>
+<body>
+    <main id="app" class="container">
+        <header class="header">
+            <h1 class="title">Memory</h1>
+            <p class="subtitle">Matching pairs.</p>
+        </header>
+        <!-- Game Stats -->
+        <section class="stats" aria-label="Spel statistieken">
+            <div class="stat">
+                <span class="stat-label">Level:</span>
+                <span id="current-level" class="stat-value">1</span>
+                <span class="stat-sub">of <span id="max-level">11</span></span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Score:</span>
+                <span id="current-score" class="stat-value">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Total:</span>
+                <span id="total-score" class="stat-value">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Moves:</span>
+                <span id="moves-count" class="stat-value">0/0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Grid:</span>
+                <span id="grid-size" class="stat-value">2×2</span>
+            </div>
+        </section>
+
+        <section class="controls" aria-label="Spel besturing">
+            <div class="buttons">
+                <button id="start" class="btn btn-primary">Start Level</button>
+                <button id="reset" class="btn">New Game</button>
+                <button id="continue" class="btn" style="display: none;">Continue game</button>
+            </div>
+        </section>
+
+        <section id="board-area" class="board-area" aria-live="polite" aria-labelledby="board-heading">
+            <h2 id="board-heading" class="visually-hidden">Spelbord</h2>
+            <!-- Bord wordt dynamisch gerenderd -->
+            <div id="board" class="board" role="grid"></div>
+        </section>
+        
+        <!-- Modal / overlay voor eindscherm of mismatch opties -->
+        <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+            <div class="overlay-card">
+                <p id="overlay-message"></p>
+                <div class="overlay-actions">
+                    <button id="overlay-continue" class="btn btn-primary">Continue</button>
+                    <button id="overlay-stop" class="btn">Stop</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
