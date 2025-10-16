@@ -167,13 +167,20 @@ php -S localhost:8000
 - [ ] Sound effects and music
 - [ ] Haptic feedback on mobile
 
-## 📜 License
+## 🎓 About This Project
 
-This project is open source and available under the [MIT License](LICENSE).
+This Memory Game was created as part of JavaScript programming exercises, showcasing:
+- Modern ES6+ JavaScript development
+- Progressive Web App implementation  
+- Object-oriented programming principles
+- Mobile-first responsive design
+- W3C compliant code standards
 
-## 🤝 Contributing
+**Built with:** Vanilla JavaScript • No frameworks • Pure CSS3 • PWA features
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+## 📞 Contact
+
+Created by **Kristof1976** - Feel free to reach out for questions or feedback!
 
 ---
 
