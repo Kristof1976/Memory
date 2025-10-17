@@ -32,6 +32,12 @@ dist/
 # screenshots/*.png
 # screenshots/*.jpg
 
+# Assignment/Exercise files (should not be public)
+*-opdracht.pdf
+*-assignment.pdf
+assignment.pdf
+opdracht.pdf
+
 # Temporary files
 *.tmp
 *.temp

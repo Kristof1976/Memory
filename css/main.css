@@ -12,16 +12,17 @@
     --card-back-1: #e6eef0;
     --card-back-2: #f8fafc;
     --radius: 10px;
-    --shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-    
-    /* Alpha variations */
-    --white-alpha-10: rgba(255, 255, 255, 0.1);
-    --white-alpha-20: rgba(255, 255, 255, 0.2);
-    --white-alpha-30: rgba(255, 255, 255, 0.3);
-    --black-alpha-35: rgba(0, 0, 0, 0.35);
-    --black-alpha-30: rgba(0, 0, 0, 0.3);
-    --primary-alpha-18: rgba(14, 165, 164, 0.18);
-    --primary-alpha-12: rgba(34, 197, 94, 0.12);
+    --shadow: 0 6px 18px #02061714;
+    --white-alpha-10: #ffffff1a;
+    --white-alpha-20: #ffffff33;
+    --white-alpha-30: #ffffff4d;
+    --black-alpha-35: #00000059;
+    --black-alpha-30: #0000004d;
+    --black-alpha-05: #0000000d;
+    --overlay-bg-alpha-90: #1a1a1ae6;
+    --primary-alpha-18: #0ea5a42e;
+    --primary-alpha-12: #22c55e1f;
+    --primary-alpha-30: #0ea5a44d;
 }
 
 * {
@@ -179,7 +180,7 @@ body {
     background: var(--card-bg);
 }
 
-/* Hybrid: Opacity-based flip  + 3D animation */
+/* flip  + 3D animation */
 .card-face {
     position: absolute;
     inset: 0;
@@ -201,7 +202,7 @@ body {
     justify-content: center;
 }
 
-/* Flip animation: opacity change + subtle 3D effect */
+/* Flip animation: */
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
@@ -339,7 +340,7 @@ body {
     }
 }
 
-/* Larger screens tweaks */
+/* Larger screens 640px and up */
 @media (min-width: 640px) {
     .title {
         font-size: 2rem
@@ -350,13 +351,13 @@ body {
     }
 }
 
-/* Accessibility focus */
+/* Access focus */
 button:focus,
 .card:focus {
     outline: 3px solid var(--primary-alpha-18)
 }
 
-/* Accessibility helpers */
+/* Access helpers */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -369,7 +370,6 @@ button:focus,
     border: 0;
 }
 
-/* Utility classes to replace inline styles */
 .hidden {
     display: none !important;
 }
@@ -400,7 +400,44 @@ button:focus,
     touch-action: manipulation;
 }
 
-/* PWA specific styles */
+/* Mismatch notification and overlay */
+.mismatch-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--danger);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 999;
+    animation: slideInNotification 0.3s ease-out;
+    box-shadow: var(--shadow);
+}
+
+.mismatch-overlay {
+    background: var(--black-alpha-05) !important;
+}
+
+.mismatch-overlay .overlay-card {
+    background: var(--overlay-bg-alpha-90);
+    backdrop-filter: blur(2px);
+    border: 2px solid var(--danger);
+}
+
+@keyframes slideInNotification {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* PWA styles */
 .pwa-install-btn {
     background: linear-gradient(135deg, var(--primary), #0d9488);
     border: none;
@@ -412,7 +449,7 @@ button:focus,
 
 .pwa-install-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(14, 165, 164, 0.3);
+    box-shadow: 0 8px 25px var(--primary-alpha-30);
 }
 
 .update-banner {

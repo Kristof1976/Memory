@@ -5,8 +5,8 @@ export default class Board {
     this.width = width;
     this.height = height;
     this.count = width * height;
-    
-    // Check if we can create pairs (even number of cards)
+
+    // Check voor paren (even number of cards)
     if (this.count % 2 !== 0) {
       throw new Error(`Board size ${width}×${height} results in odd number of cards (${this.count}). Cannot create pairs.`);
     }
@@ -28,7 +28,7 @@ export default class Board {
       pairs.push(new Card(`${index}-B`, index, img));
     });
 
-    // Fisher–Yates shuffle
+    // shuffle
     for (let i = pairs.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pairs[i], pairs[j]] = [pairs[j], pairs[i]];

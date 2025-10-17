@@ -4,7 +4,7 @@ A modern, progressive web app (PWA) version of the classic memory card matching 
 
 ## 🌐 Live Demo
 
-**Play Online:** https://kristof1976.github.io/Memory/
+**Play Online or install for offline gaming:** https://kristof1976.github.io/Memory/
 
 The game is hosted on GitHub Pages and works on all devices - mobile, tablet, and desktop!
 

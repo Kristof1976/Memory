@@ -7,7 +7,7 @@ export default class Game {
     this.gameManager = gameManager;
 
     this.board = null;
-    this.flipped = []; // indices van momenteel open kaarten
+    this.flipped = []; // momenteel open kaarten
     this.locked = false;
     this.isPlaying = false;
     this.onLevelComplete = null; // callback voor level completion

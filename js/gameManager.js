@@ -82,8 +82,8 @@ export default class GameManager {
     // Time bonus: sneller = meer punten
     const timeElapsed = (Date.now() - this.startTime) / 1000;
     const timeBonus = Math.max(0, SCORING.TIME_BONUS_MAX - (timeElapsed * 2));
-    
-    // Streak bonus: consecutive matches
+
+    // Streak bonus: opeenvolgende matches
     const streakBonus = this.streak * SCORING.STREAK_BONUS;
     
     // Move penalty: teveel moves = punten verlies

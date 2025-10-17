@@ -3,7 +3,7 @@ export const LEVEL_CONFIG = [
   { level: 1, width: 2, height: 2, name: "Novice" },
   { level: 2, width: 3, height: 2, name: "Easy" },
   { level: 3, width: 4, height: 2, name: "Getting Started" },
-  { level: 4, width: 2, height: 3, name: "Rectangle" }, // 2×3 = 6 kaarten
+  { level: 4, width: 2, height: 3, name: "Rectangle" }, 
   { level: 5, width: 4, height: 3, name: "Medium" },
   { level: 6, width: 4, height: 4, name: "Standard" },
   { level: 7, width: 5, height: 4, name: "Advanced" },

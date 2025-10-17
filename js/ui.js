@@ -19,7 +19,6 @@ export default class UI {
   }
 
   renderBoard(cards, columns, rows = null) {
-    // set custom property used by CSS grid
     this.boardEl.style.setProperty("--cols", columns);
     if (rows) {
       this.boardEl.style.setProperty("--rows", rows);
@@ -72,7 +71,6 @@ export default class UI {
   }
 
   bindCardClick(handler) {
-    // delegate
     this.boardEl.addEventListener("click", (e) => {
       const cell = e.target.closest(".card");
       if (!cell) return;
@@ -93,30 +91,36 @@ export default class UI {
   }
 
   showMismatchOptions(onContinue, onStop) {
-    this.overlayMessage.textContent = "No match — choose:";
-    this.overlay.classList.remove("hidden");
+    // Delay the popup to give players time to memorize card positions
+    setTimeout(() => {
+      this.overlayMessage.textContent = "No match — Try again:";
+      this.overlay.classList.remove("hidden");
+      this.overlay.classList.add("mismatch-overlay");
 
-    // temporarily disable rest of page interactions
-    this.overlayContinue.disabled = false;
-    this.overlayStop.disabled = false;
+      // temporarily disable rest of page interactions
+      this.overlayContinue.disabled = false;
+      this.overlayStop.disabled = false;
 
-    const { overlayContinue, overlayStop } = this;
+      const { overlayContinue, overlayStop } = this;
 
-    const cont = () => {
-      overlayContinue.removeEventListener("click", cont);
-      overlayStop.removeEventListener("click", stop);
-      this.overlay.classList.add("hidden");
-      onContinue();
-    };
-    const stop = () => {
-      overlayContinue.removeEventListener("click", cont);
-      overlayStop.removeEventListener("click", stop);
-      this.overlay.classList.add("hidden");
-      onStop();
-    };
+      const cont = () => {
+        overlayContinue.removeEventListener("click", cont);
+        overlayStop.removeEventListener("click", stop);
+        this.overlay.classList.add("hidden");
+        this.overlay.classList.remove("mismatch-overlay");
+        onContinue();
+      };
+      const stop = () => {
+        overlayContinue.removeEventListener("click", cont);
+        overlayStop.removeEventListener("click", stop);
+        this.overlay.classList.add("hidden");
+        this.overlay.classList.remove("mismatch-overlay");
+        onStop();
+      };
 
-    overlayContinue.addEventListener("click", cont);
-    overlayStop.addEventListener("click", stop);
+      overlayContinue.addEventListener("click", cont);
+      overlayStop.addEventListener("click", stop);
+    }, 1500); // 1.5 second delay to see and memorize cards
   }
 
   showLevelComplete(levelStats, onNext) {
