@@ -1,4 +1,4 @@
-const CACHE_NAME = 'memory-game-v1';
+const CACHE_NAME = 'memory-game-v2'; //bij elke update versienummer verhogen voor update te triggeren
 const BASE_PATH = '/Memory/';
 const urlsToCache = [
   BASE_PATH,
@@ -101,7 +101,7 @@ self.addEventListener('fetch', event => {
             return response;
           }
           
-          // Clone response for cache
+          // Clone response for cache 
           const responseToCache = response.clone();
           caches.open(CACHE_NAME)
             .then(cache => {
