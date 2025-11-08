@@ -1,3 +1,27 @@
+## 🎓 About This Project
+
+This Memory Game was created as part of JavaScript programming exercises, showcasing:
+// ...existing code...
+**Built with:** Vanilla JavaScript • No frameworks • Pure CSS3 • PWA features
+
+## 🖼️ Emoji Licentie
+
+De emoji’s gebruikt in deze game zijn afkomstig van **Twemoji** (Twitter) en **OpenMoji**.
+
+- Twemoji valt onder de **CC BY-SA 4.0-licentie**. Je mag deze gratis gebruiken, kopiëren en aanpassen, ook voor commercieel gebruik, **mits** je de bron vermeldt en eventuele afgeleide werken onder dezelfde licentie beschikbaar stelt. Meer info: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- OpenMoji valt onder de **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** licentie. Meer info: [openmoji.org/license](https://openmoji.org/license/)
+
+Bronvermelding:
+- Twemoji (Twitter), CC BY-SA 4.0
+- OpenMoji, CC BY-SA 4.0
+
+## 📞 Contact
+
+Created by **Kristof1976** - Feel free to reach out for questions or feedback!
+
+---
+
+**Enjoy the challenge! 🧠💪**
 # 🎮 Memory Game - Progressive Challenge
 
 A modern, progressive web app (PWA) version of the classic memory card matching game built with vanilla JavaScript, featuring 11 challenging levels and a sophisticated scoring system.

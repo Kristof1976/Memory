@@ -29,8 +29,34 @@
 <body>
     <main id="app" class="container">
         <header class="header">
-            <h1 class="title">Memory</h1>
-            <p class="subtitle">Matching pairs.</p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h1 class="title">Memory</h1>
+                    <p class="subtitle">Matching pairs.</p>
+                </div>
+                <button id="info-btn" class="btn" style="margin-left:16px;">Info</button>
+            </div>
+        <!-- Info/Credits Overlay -->
+        <div id="info-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+            <div class="overlay-card">
+                                <h2 style="margin-top:0;">Info & Credits</h2>
+                                <p style="font-size:1rem; color:#0ea5a4; font-weight:bold;">Memory Game - Progressive Challenge</p>
+                                <p style="font-size:1rem; color:#fff; margin-bottom:8px;">Doel van het spel: <br>Train je geheugen door paren van kaarten te vinden. Speel door verschillende thema's zoals dieren, planten en meer. Ontgrendel hogere levels en verbeter je score!</p>
+                                <ul style="text-align:left; color:#9ca3af; font-size:0.95rem; margin-bottom:12px;">
+                                    <li>Zoek en match alle paren kaarten per level</li>
+                                    <li>Beperkt aantal zetten per level</li>
+                                    <li>Score op basis van snelheid, streaks en efficiëntie</li>
+                                    <li>Verschillende thema's mogelijk (bijvoorbeeld dieren, planten)</li>
+                                    <li>Progressie en scores worden automatisch opgeslagen</li>
+                                </ul>
+                                <p style="font-size:0.95rem; color:#9ca3af;">
+                                    Emoji’s in deze game:
+                                    <br>Twemoji (Twitter), <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color: #0ea5a4;">CC BY-SA 4.0</a>
+                                    <br>OpenMoji, <a href="https://openmoji.org/license/" target="_blank" rel="noopener" style="color: #0ea5a4;">CC BY-SA 4.0</a>
+                                </p>
+                                <button id="info-close" class="btn btn-primary" style="margin-top:12px;">Sluiten</button>
+            </div>
+        </div>
         </header>
         <!-- Game Stats -->
         <section class="stats" aria-label="Spel statistieken">
@@ -58,11 +84,16 @@
         </section>
 
         <section class="controls" aria-label="Spel besturing">
-            <div class="buttons">
-                <button id="start" class="btn btn-primary">Start Level</button>
-                <button id="reset" class="btn">New Game</button>
-                <button id="continue" class="btn" style="display: none;">Continue game</button>
-            </div>
+                        <div class="buttons">
+                                <select id="theme-select" class="btn" style="min-width:120px;">
+                                    <option value="emojis">Emojis</option>
+                                    <option value="animals">Dieren</option>
+                                </select>
+                                <button id="start" class="btn btn-primary">Start Level</button>
+                                <button id="reset" class="btn">New Game</button>
+                                <button id="continue" class="btn" style="display: none;">Continue game</button>
+                                <button id="stop" class="btn">Stop Game</button>
+                        </div>
         </section>
 
         <section id="board-area" class="board-area" aria-live="polite" aria-labelledby="board-heading">

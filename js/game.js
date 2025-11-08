@@ -67,19 +67,10 @@ export default class Game {
       } else {
         // mismatch 
         this.gameManager.recordMismatch();
-        
-        // Show mismatch options
-        this.ui.showMismatchOptions(
-          () => {
-            // Continue
-            this._hideNonMatched();
-          },
-          () => {
-            // Stop level
-            this.isPlaying = false;
-            this._hideNonMatched();
-          }
-        );
+        // Direct verdergaan: kaarten omdraaien en doorspelen
+        setTimeout(() => {
+          this._hideNonMatched();
+        }, 1500); // 1.5s delay zodat speler de kaarten kan zien
       }
     }
   }

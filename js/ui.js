@@ -16,6 +16,20 @@ export default class UI {
     this.overlayMessage = document.querySelector("#overlay-message");
     this.overlayContinue = document.querySelector("#overlay-continue");
     this.overlayStop = document.querySelector("#overlay-stop");
+
+    // info/credits overlay
+    this.infoBtn = document.getElementById("info-btn");
+    this.infoOverlay = document.getElementById("info-overlay");
+    this.infoClose = document.getElementById("info-close");
+
+    if (this.infoBtn && this.infoOverlay && this.infoClose) {
+      this.infoBtn.addEventListener("click", () => {
+        this.infoOverlay.classList.remove("hidden");
+      });
+      this.infoClose.addEventListener("click", () => {
+        this.infoOverlay.classList.add("hidden");
+      });
+    }
   }
 
   renderBoard(cards, columns, rows = null) {
