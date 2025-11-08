@@ -1,4 +1,4 @@
-const CACHE_NAME = 'memory-game-v2'; //bij elke update versienummer verhogen voor update te triggeren
+const CACHE_NAME = 'memory-game-v3'; //bij elke update versienummer verhogen voor update te triggeren
 const BASE_PATH = '/Memory/';
 const urlsToCache = [
   BASE_PATH,
